@@ -1,3 +1,5 @@
 rootProject.name='Neumomed'
 include ':app'
 include ':feature:splash'
+include ':libraries:actions'
+include ':libraries:uicomponents'

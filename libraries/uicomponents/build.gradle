@@ -1,0 +1,8 @@
+apply plugin: 'com.android.library'
+apply from: '../../android_commons.gradle'
+
+dependencies {
+    implementation AndroidLibraries.APP_COMPACT
+    implementation AndroidLibraries.NAVIGATION_UI_KTX
+    implementation AndroidLibraries.NAVIGATION_FRAGMENT_KTX
+}

@@ -14,6 +14,9 @@
             <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/feature" />
             <option value="$PROJECT_DIR$/feature/splash" />
+            <option value="$PROJECT_DIR$/libraries" />
+            <option value="$PROJECT_DIR$/libraries/actions" />
+            <option value="$PROJECT_DIR$/libraries/uicomponents" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
