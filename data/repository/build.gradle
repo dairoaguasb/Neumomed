@@ -1,0 +1,22 @@
+apply plugin: 'com.android.library'
+apply from: '../../android_commons.gradle'
+
+dependencies {
+    // MODULES
+    implementation project(ModulesDependency.DATA_REMOTE)
+    implementation project(ModulesDependency.DATA_LOCAL)
+    implementation project(ModulesDependency.DATA_MODEL)
+    implementation project(ModulesDependency.COMMON)
+
+    // ANDROID
+    implementation KotlinLibraries.KOTLIN_COROUTINE_CORE
+    implementation KotlinLibraries.COROUTINES_ANDROID
+    implementation AndroidLibraries.LIFECYCLE_EXTENSIONS
+
+    // KOIN
+    implementation Libraries.KOIN
+    implementation Libraries.KOIN_VIEW_MODEL
+    implementation Libraries.KOIN_SCOPE
+
+    implementation Libraries.TIMBER
+}

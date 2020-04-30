@@ -1,0 +1,22 @@
+apply plugin: 'com.android.library'
+apply from: '../../android_commons.gradle'
+
+android {
+    defaultConfig {
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+}
+
+dependencies {
+    // ROOM
+    kapt Libraries.ROOM_COMPILER
+    implementation Libraries.ROOM_RUNTIME
+    implementation Libraries.ROOM_KTX
+    implementation AndroidLibraries.LIFECYCLE_EXTENSIONS
+    // DATA MODULE
+    implementation project(ModulesDependency.DATA_MODEL)
+    // KOIN
+    implementation Libraries.KOIN
+    implementation Libraries.KOIN_VIEW_MODEL
+    implementation Libraries.KOIN_SCOPE
+}

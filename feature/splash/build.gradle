@@ -12,9 +12,8 @@ android {
 }
 
 dependencies {
-    //MODULES
-//    implementation project(ModulesDependency.LIBRARY_ACTIONS)
-//    implementation project(ModulesDependency.LIBRARY_UICOMPONENTS)
+//    MODULES
+    implementation project(ModulesDependency.LIBRARY_ACTIONS)
+    implementation project(ModulesDependency.LIBRARY_UICOMPONENTS)
 //    implementation project(ModulesDependency.FEATURE_MAIN)
-
 }
