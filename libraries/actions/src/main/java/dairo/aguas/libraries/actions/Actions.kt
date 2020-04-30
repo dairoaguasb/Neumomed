@@ -12,6 +12,9 @@ object Actions {
     fun openSplashIntent(context: Context) =
         internalIntent(context, Constants.actionSplash)
 
+    fun openMainIntent(context: Context) =
+        internalIntent(context, Constants.actionMain)
+
     private fun internalIntent(context: Context, action: String) =
         Intent(action).setPackage(context.packageName)
 }

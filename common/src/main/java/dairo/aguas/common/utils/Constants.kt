@@ -6,4 +6,5 @@ package dairo.aguas.common.utils
 object Constants {
 
     const val actionSplash = "dairo.aguas.splash.open"
+    const val actionMain = "dairo.aguas.main.open"
 }

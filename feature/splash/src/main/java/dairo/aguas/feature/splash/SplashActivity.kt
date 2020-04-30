@@ -1,5 +1,6 @@
 package dairo.aguas.feature.splash
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -20,7 +21,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun openMainActivity() {
-//        startActivity(Actions.openMainIntent(this))
+        startActivity(Actions.openMainIntent(this).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
         finish()
     }
 }

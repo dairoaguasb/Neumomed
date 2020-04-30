@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/postListFragment">
+
+    <fragment
+        android:id="@+id/postListFragment"
+        android:name="dairo.aguas.feature.main.ui.postList.PostListFragment"
+        android:label="Posts"
+        tools:layout="@layout/post_list_fragment">
+        <action
+            android:id="@+id/action_postListFragment_to_postDetailFragment"
+            app:destination="@id/postDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/postDetailFragment"
+        android:name="dairo.aguas.feature.main.ui.postDetail.PostDetailFragment"
+        android:label="Detalle"
+        tools:layout="@layout/post_detail_fragment" />
+</navigation>
