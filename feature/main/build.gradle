@@ -1,7 +1,5 @@
 apply from: '../../android_feature_dependencies.gradle'
 apply plugin: 'androidx.navigation.safeargs'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 android {
     defaultConfig {
@@ -21,7 +19,4 @@ dependencies {
 
     implementation project(ModulesDependency.DATA_REPOSITORY)
     implementation project(ModulesDependency.DATA_MODEL)
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
 }
