@@ -1,0 +1,20 @@
+apply plugin: 'com.android.library'
+apply from: '../../android_feature_dependencies.gradle'
+
+android {
+    defaultConfig {
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    dataBinding {
+        enabled true
+    }
+}
+
+dependencies {
+    //MODULES
+//    implementation project(ModulesDependency.LIBRARY_ACTIONS)
+//    implementation project(ModulesDependency.LIBRARY_UICOMPONENTS)
+//    implementation project(ModulesDependency.FEATURE_MAIN)
+
+}

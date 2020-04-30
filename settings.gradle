@@ -1,2 +1,3 @@
 rootProject.name='Neumomed'
 include ':app'
+include ':feature:splash'
