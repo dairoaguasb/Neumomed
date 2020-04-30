@@ -1,0 +1,22 @@
+apply plugin: 'com.android.library'
+apply from: '../../android_core_dependencies.gradle'
+apply from: '../../android_commons.gradle'
+dependencies {
+    implementation Libraries.KOIN
+    implementation Libraries.KOIN_VIEW_MODEL
+    implementation Libraries.KOIN_SCOPE
+
+    // TEST
+    androidTestImplementation TestLibraries.ANDROID_TEST_RUNNER
+    androidTestImplementation TestLibraries.ANDROID_TEST_RULES
+    androidTestImplementation TestLibraries.ESPRESSO_CORE
+    androidTestImplementation TestLibraries.ANDROID_JUNIT
+
+    androidTestImplementation TestLibraries.KOIN_TEST
+    androidTestImplementation TestLibraries.FRAGMENT_TEST
+    androidTestImplementation TestLibraries.MOCKK_ANDROID
+
+    testImplementation TestLibraries.JUNIT
+    testImplementation TestLibraries.MOCKK
+}
+

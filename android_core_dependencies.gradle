@@ -1,0 +1,18 @@
+/**
+ * Shared dependencies between modules
+ */
+dependencies {
+    // KOTLIN
+    implementation KotlinLibraries.KOTLIN
+    implementation KotlinLibraries.KOTLIN_COROUTINE_CORE
+    implementation KotlinLibraries.COROUTINES_ANDROID
+    // ANDROID
+    implementation AndroidLibraries.APP_COMPACT
+    implementation AndroidLibraries.CORE_KTX
+    implementation AndroidLibraries.CONSTRAINT_LAYOUT
+    implementation AndroidLibraries.LIFECYCLE_VIEW_MODEL
+    implementation AndroidLibraries.LIFECYCLE_EXTENSIONS
+    implementation AndroidLibraries.RECYCLER_VIEW
+    implementation AndroidLibraries.NAVIGATION_UI_KTX
+    implementation AndroidLibraries.NAVIGATION_FRAGMENT_KTX
+}
