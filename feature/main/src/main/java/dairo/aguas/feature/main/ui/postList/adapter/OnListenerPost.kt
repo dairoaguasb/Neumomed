@@ -10,4 +10,6 @@ interface OnListenerPost {
     fun onClickListener(post: Post)
 
     fun onClickAddFavorite(post: Post)
+
+    fun removeItem(post: Post)
 }

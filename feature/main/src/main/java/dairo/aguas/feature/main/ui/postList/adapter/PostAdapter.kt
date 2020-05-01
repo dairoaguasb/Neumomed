@@ -1,5 +1,6 @@
 package dairo.aguas.feature.main.ui.postList.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -37,6 +38,11 @@ class PostAdapter(private val onListenerPost: OnListenerPost) :
                 return PostViewHolder(binding)
             }
         }
+    }
+
+    fun removeItem(position: Int) {
+        val item = getItem(position)
+        onListenerPost.removeItem(item)
     }
 }
 
