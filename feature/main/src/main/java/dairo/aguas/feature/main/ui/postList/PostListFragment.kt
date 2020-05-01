@@ -61,6 +61,10 @@ class PostListFragment : Fragment(), OnListenerPost {
 
     }
 
+    override fun onClickAddFavorite(post: Post) {
+        viewModel.addPostFavorite(post)
+    }
+
     private fun handleUI(uiModel: PostListUiModel) {
         uiModel.apply {
             binding.pbLoading.visibility = uiModel.toggleVisibility(showProgress)

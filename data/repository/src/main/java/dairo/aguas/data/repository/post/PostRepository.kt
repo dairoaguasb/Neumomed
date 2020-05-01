@@ -18,4 +18,6 @@ interface PostRepository {
     fun getPostListLocalFlow() : Flow<List<Post>>
 
     suspend fun updatePost(post: Post)
+
+    suspend fun addPostFavorite(isFavorite: Boolean, idPost: Int)
 }

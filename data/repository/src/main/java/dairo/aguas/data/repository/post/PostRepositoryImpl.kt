@@ -31,4 +31,8 @@ class PostRepositoryImpl(
         }
     }
 
+    override suspend fun addPostFavorite(isFavorite: Boolean, idPost: Int) {
+        postDao.addPostFavorite(isFavorite, idPost)
+    }
+
 }

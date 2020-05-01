@@ -3,6 +3,7 @@ package dairo.aguas.feature.main.ui.postList
 import androidx.lifecycle.*
 import dairo.aguas.data.model.post.Post
 import dairo.aguas.data.model.vo.Result
+import dairo.aguas.feature.main.domain.AddPostFavoriteLocal
 import dairo.aguas.feature.main.domain.GetPostListAPI
 import dairo.aguas.feature.main.domain.GetPostListLocalFlow
 import dairo.aguas.feature.main.domain.SetPostListLocal
@@ -12,6 +13,7 @@ import kotlinx.coroutines.launch
 class PostListViewModel(
     private val getPostListAPI: GetPostListAPI,
     private val setPostListLocal: SetPostListLocal,
+    private val addPostFavoriteLocal: AddPostFavoriteLocal,
     getPostListLocalFlow: GetPostListLocalFlow
 ) : ViewModel() {
 
@@ -59,6 +61,13 @@ class PostListViewModel(
         modifyList.forEach { it.isRead = false }
         modifyList.addAll(subList)
         return modifyList
+    }
+
+    fun addPostFavorite(post: Post) {
+        val isFavorite = post.isFavorite.not()
+        viewModelScope.launch(Dispatchers.IO) {
+            addPostFavoriteLocal.execute(isFavorite, post.id)
+        }
     }
 
 

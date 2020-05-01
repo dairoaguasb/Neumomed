@@ -8,4 +8,6 @@ import dairo.aguas.data.model.post.Post
 interface OnListenerPost {
 
     fun onClickListener(post: Post)
+
+    fun onClickAddFavorite(post: Post)
 }

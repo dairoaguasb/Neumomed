@@ -1,5 +1,6 @@
 package dairo.aguas.feature.main.di
 
+import dairo.aguas.feature.main.domain.AddPostFavoriteLocal
 import dairo.aguas.feature.main.domain.GetPostListAPI
 import dairo.aguas.feature.main.domain.GetPostListLocalFlow
 import dairo.aguas.feature.main.domain.SetPostListLocal
@@ -14,5 +15,6 @@ val mainModule = module {
     factory { GetPostListAPI(get()) }
     factory { SetPostListLocal(get()) }
     factory { GetPostListLocalFlow(get()) }
-    viewModel { PostListViewModel(get(), get(), get()) }
+    factory { AddPostFavoriteLocal(get()) }
+    viewModel { PostListViewModel(get(), get(), get(), get()) }
 }

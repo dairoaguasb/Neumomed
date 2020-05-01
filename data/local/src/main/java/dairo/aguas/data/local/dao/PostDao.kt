@@ -24,4 +24,7 @@ interface PostDao {
 
     @Query("UPDATE post SET title = :title, body = :body WHERE id = :id")
     suspend fun updatePost(title: String, body: String, id: Int)
+
+    @Query("UPDATE POST SET isFavorite = :isFavorite WHERE id = :idPost")
+    suspend fun addPostFavorite(isFavorite: Boolean, idPost: Int)
 }

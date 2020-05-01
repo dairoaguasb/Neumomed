@@ -62,6 +62,7 @@
                 android:id="@+id/ivFavorite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="@{() -> clickListener.onClickAddFavorite(post)}"
                 android:padding="5dp"
                 app:isFavorite="@{post.isFavorite}"
                 app:layout_constraintBottom_toBottomOf="parent"
