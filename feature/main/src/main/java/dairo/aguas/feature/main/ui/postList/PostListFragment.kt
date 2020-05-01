@@ -50,6 +50,7 @@ class PostListFragment : Fragment(), OnListenerPost {
 
     private fun startObserver() {
         viewModel.uiModel.observe(viewLifecycleOwner, uiModel)
+        viewModel.postList.observe(viewLifecycleOwner, postListObserver)
     }
 
     private fun handlePostList(it: List<Post>) {

@@ -1,24 +1,25 @@
 package dairo.aguas.feature.main.ui.postList
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import dairo.aguas.data.model.post.Post
 import dairo.aguas.data.model.vo.Result
 import dairo.aguas.feature.main.domain.GetPostListAPI
+import dairo.aguas.feature.main.domain.GetPostListLocalFlow
 import dairo.aguas.feature.main.domain.SetPostListLocal
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class PostListViewModel(
     private val getPostListAPI: GetPostListAPI,
-    private val setPostListLocal: SetPostListLocal
+    private val setPostListLocal: SetPostListLocal,
+    private val getPostListLocalFlow: GetPostListLocalFlow
 ) : ViewModel() {
 
     private val _uiModel = MutableLiveData<PostListUiModel>()
     val uiModel: LiveData<PostListUiModel>
         get() = _uiModel
+
+    val postList: LiveData<List<Post>> = getPostListLocalFlow.execute().asLiveData()
 
     init {
         getPostListAPI()
