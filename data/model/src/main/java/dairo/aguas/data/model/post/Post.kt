@@ -13,5 +13,6 @@ data class Post(
     val userId: Int = 0,
     val title: String = "",
     val body: String = "",
-    var isRead: Boolean = true
+    var isRead: Boolean = true,
+    var isFavorite: Boolean = false
 )

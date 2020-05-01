@@ -50,23 +50,22 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="4dp"
-                android:layout_marginEnd="4dp"
                 android:text="@{post.body}"
                 android:textColor="@android:color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/ivFavorite"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvTitlePost"
                 tools:text="quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto" />
 
             <ImageView
-                android:id="@+id/ivDelete"
+                android:id="@+id/ivFavorite"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_delete" />
+                app:isFavorite="@{post.isFavorite}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
             <TextView
                 android:id="@+id/textView"
@@ -78,9 +77,8 @@
                 android:textColor="@android:color/background_light"
                 android:textStyle="bold"
                 app:bindVisible="@{!post.isRead}"
-                app:layout_constraintBottom_toBottomOf="@+id/ivDelete"
-                app:layout_constraintEnd_toStartOf="@+id/ivDelete"
-                app:layout_constraintTop_toTopOf="@+id/ivDelete" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

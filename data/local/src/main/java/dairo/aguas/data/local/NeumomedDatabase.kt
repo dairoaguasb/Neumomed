@@ -12,7 +12,7 @@ import dairo.aguas.data.model.post.Post
  */
 @Database(
     entities = [Post::class],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 abstract class NeumomedDatabase : RoomDatabase() {
