@@ -1,33 +1,56 @@
 package dairo.aguas.feature.main.ui.postList
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import dairo.aguas.data.model.post.Post
+import dairo.aguas.feature.main.databinding.PostListFragmentBinding
+import dairo.aguas.feature.main.ui.postList.adapter.OnListenerPost
+import dairo.aguas.feature.main.ui.postList.adapter.PostAdapter
+import org.koin.android.viewmodel.ext.android.viewModel
 
-import dairo.aguas.feature.main.R
+class PostListFragment : Fragment(), OnListenerPost {
 
-class PostListFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = PostListFragment()
-    }
-
-    private lateinit var viewModel: PostListViewModel
+    private val viewModel: PostListViewModel by viewModel()
+    private lateinit var binding: PostListFragmentBinding
+    private lateinit var postAdapter: PostAdapter
+    private val postListObserver = Observer<List<Post>> { handlePostList(it) }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.post_list_fragment, container, false)
+        configureDataBinding(inflater)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(PostListViewModel::class.java)
-        // TODO: Use the ViewModel
+        configureAdapter()
+    }
+
+    private fun configureDataBinding(inflater: LayoutInflater) {
+        binding = PostListFragmentBinding.inflate(inflater)
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
+    }
+
+    private fun configureAdapter() {
+        postAdapter = PostAdapter(this)
+        binding.rvPosts.layoutManager = LinearLayoutManager(context)
+        binding.rvPosts.adapter = postAdapter
+    }
+
+    private fun handlePostList(it: List<Post>) {
+        postAdapter.submitList(it)
+    }
+
+    override fun onClickListener(post: Post) {
+
     }
 
 }
