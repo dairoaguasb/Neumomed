@@ -13,11 +13,11 @@ import dairo.aguas.data.model.vo.Result
  */
 class PostDatasource(private val apiServices: ApiServices, private val moshi: Moshi) {
 
-    suspend fun getPostList(): Result<Post> {
+    suspend fun getPostList(): Result<List<Post>> {
         try {
             apiServices.getPostList().run {
                 return if (isSuccessful && body() != null)
-                    Result.Success(body() as Post)
+                    Result.Success(body() as List<Post>)
                 else
                     Result.Failure(
                         Exception(

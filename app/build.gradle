@@ -20,6 +20,7 @@ dependencies {
     implementation project(ModulesDependency.LIBRARY_UICOMPONENTS)
     implementation project(ModulesDependency.DATA_LOCAL)
     implementation project(ModulesDependency.DATA_REMOTE)
+    implementation project(ModulesDependency.DATA_REPOSITORY)
 
     implementation project(ModulesDependency.COMMON)
 
