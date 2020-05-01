@@ -140,7 +140,7 @@ class PostListFragment : Fragment(), OnListenerPost {
     }
 
     override fun removeItem(post: Post) {
-        Log.d("item", post.id.toString())
+        viewModel.deletePost(post)
     }
 
     private fun handleUI(uiModel: PostListUiModel) {

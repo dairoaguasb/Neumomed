@@ -27,4 +27,7 @@ interface PostDao {
 
     @Query("UPDATE POST SET isFavorite = :isFavorite WHERE id = :idPost")
     suspend fun addPostFavorite(isFavorite: Boolean, idPost: Int)
+
+    @Query("DELETE FROM post WHERE id = :idPost")
+    suspend fun deletePost(idPost: Int)
 }

@@ -3,10 +3,7 @@ package dairo.aguas.feature.main.ui.postList
 import androidx.lifecycle.*
 import dairo.aguas.data.model.post.Post
 import dairo.aguas.data.model.vo.Result
-import dairo.aguas.feature.main.domain.AddPostFavoriteLocal
-import dairo.aguas.feature.main.domain.GetPostListAPI
-import dairo.aguas.feature.main.domain.GetPostListLocalFlow
-import dairo.aguas.feature.main.domain.SetPostListLocal
+import dairo.aguas.feature.main.domain.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -14,6 +11,7 @@ class PostListViewModel(
     private val getPostListAPI: GetPostListAPI,
     private val setPostListLocal: SetPostListLocal,
     private val addPostFavoriteLocal: AddPostFavoriteLocal,
+    private val deletePostLocal: DeletePostLocal,
     getPostListLocalFlow: GetPostListLocalFlow
 ) : ViewModel() {
 
@@ -70,6 +68,13 @@ class PostListViewModel(
         }
     }
 
+    fun deletePost(post: Post) {
+        viewModelScope.launch(Dispatchers.IO) {
+            viewModelScope.launch(Dispatchers.IO) {
+                deletePostLocal.execute(post.id)
+            }
+        }
+    }
 
     private fun emitUiState(showProgress: Boolean = false, showMessageAlert: String = "") {
         viewModelScope.launch(Dispatchers.Main) {
