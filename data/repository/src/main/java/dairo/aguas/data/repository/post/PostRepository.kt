@@ -11,7 +11,11 @@ interface PostRepository {
 
     suspend fun getPostList() : Result<List<Post>>
 
+    suspend fun getTotalPosts() : Int
+
     suspend fun setPostListLocal(postList: List<Post>)
 
     fun getPostListLocalFlow() : Flow<List<Post>>
+
+    suspend fun updatePost(post: Post)
 }

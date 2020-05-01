@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 class PostListViewModel(
     private val getPostListAPI: GetPostListAPI,
     private val setPostListLocal: SetPostListLocal,
-    private val getPostListLocalFlow: GetPostListLocalFlow
+    getPostListLocalFlow: GetPostListLocalFlow
 ) : ViewModel() {
 
     private val _uiModel = MutableLiveData<PostListUiModel>()
@@ -47,10 +47,18 @@ class PostListViewModel(
 
     private fun validatePostListData(postList: List<Post>) {
         viewModelScope.launch(Dispatchers.IO) {
-            setPostListLocal.execute(postList).also {
+            setPostListLocal.execute(modifyProductList(postList)).also {
                 emitUiState(showProgress = false)
             }
         }
+    }
+
+    private fun modifyProductList(postList: List<Post>): MutableList<Post> {
+        val subList = postList.subList(20, postList.size)
+        val modifyList = postList.take(20).toMutableList()
+        modifyList.forEach { it.isRead = false }
+        modifyList.addAll(subList)
+        return modifyList
     }
 
 

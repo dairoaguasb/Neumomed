@@ -9,6 +9,12 @@ import dairo.aguas.data.repository.post.PostRepository
 class SetPostListLocal(private val postRepository: PostRepository) {
 
     suspend fun execute(postList: List<Post>) {
-        postRepository.setPostListLocal(postList)
+        if (postRepository.getTotalPosts() == 0)
+            postRepository.setPostListLocal(postList)
+        else {
+            postList.forEach { post ->
+                postRepository.updatePost(post)
+            }
+        }
     }
 }

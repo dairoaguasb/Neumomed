@@ -18,4 +18,10 @@ interface PostDao {
 
     @Query("SELECT * FROM post")
     fun getPostList(): Flow<List<Post>>
+
+    @Query("SELECT COUNT(id) FROM post")
+    suspend fun getTotalPosts(): Int
+
+    @Query("UPDATE post SET title = :title, body = :body WHERE id = :id")
+    suspend fun updatePost(title: String, body: String, id: Int)
 }

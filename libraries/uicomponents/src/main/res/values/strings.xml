@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Neumomed</string>
+    <string name="not_read">No leido</string>
 </resources>
