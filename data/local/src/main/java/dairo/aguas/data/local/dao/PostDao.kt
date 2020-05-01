@@ -14,13 +14,19 @@ import kotlinx.coroutines.flow.Flow
 interface PostDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertAll(productList: List<Post>)
+    suspend fun insertAll(postList: List<Post>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(post: Post)
 
     @Query("SELECT * FROM post")
     fun getPostList(): Flow<List<Post>>
 
     @Query("SELECT COUNT(id) FROM post")
     suspend fun getTotalPosts(): Int
+
+    @Query("SELECT * FROM post WHERE id = :idPost")
+    suspend fun getPostById(idPost: Int): Post?
 
     @Query("UPDATE post SET title = :title, body = :body WHERE id = :id")
     suspend fun updatePost(title: String, body: String, id: Int)

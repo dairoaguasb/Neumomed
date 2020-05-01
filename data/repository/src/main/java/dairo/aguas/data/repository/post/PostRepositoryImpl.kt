@@ -18,8 +18,15 @@ class PostRepositoryImpl(
     override suspend fun getTotalPosts() =
         postDao.getTotalPosts()
 
+    override suspend fun getPostById(idPost: Int) =
+        postDao.getPostById(idPost)
+
     override suspend fun setPostListLocal(postList: List<Post>) {
         postDao.insertAll(postList)
+    }
+
+    override suspend fun setPostLocal(post: Post) {
+        postDao.insert(post)
     }
 
     override fun getPostListLocalFlow() =

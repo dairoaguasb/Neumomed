@@ -45,6 +45,7 @@ class PostListFragment : Fragment(), OnListenerPost {
         super.onActivityCreated(savedInstanceState)
         configureAdapter()
         configureItemTouch()
+        configureOnRefresh()
         startObserver()
     }
 
@@ -122,6 +123,12 @@ class PostListFragment : Fragment(), OnListenerPost {
         itemTouchHelper.attachToRecyclerView(binding.rvPosts)
     }
 
+    private fun configureOnRefresh() {
+        binding.swipeRefresh.setOnRefreshListener {
+            viewModel.getPostListAPI()
+        }
+    }
+
     private fun startObserver() {
         viewModel.uiModel.observe(viewLifecycleOwner, uiModel)
         viewModel.postList.observe(viewLifecycleOwner, postListObserver)
@@ -129,6 +136,11 @@ class PostListFragment : Fragment(), OnListenerPost {
 
     private fun handlePostList(it: List<Post>) {
         postAdapter.submitList(it)
+        getPostList(it)
+    }
+
+    private fun getPostList(postList: List<Post>) {
+        if (postList.isEmpty()) viewModel.getPostListAPI()
     }
 
     override fun onClickListener(post: Post) {
@@ -145,7 +157,7 @@ class PostListFragment : Fragment(), OnListenerPost {
 
     private fun handleUI(uiModel: PostListUiModel) {
         uiModel.apply {
-            binding.pbLoading.visibility = uiModel.toggleVisibility(showProgress)
+            binding.swipeRefresh.isRefreshing = showProgress
 
             if (showMessageAlert.isNotEmpty())
                 Toast.makeText(context, showMessageAlert, Toast.LENGTH_LONG).show()

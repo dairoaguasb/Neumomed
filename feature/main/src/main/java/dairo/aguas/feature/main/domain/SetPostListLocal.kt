@@ -13,7 +13,11 @@ class SetPostListLocal(private val postRepository: PostRepository) {
             postRepository.setPostListLocal(postList)
         else {
             postList.forEach { post ->
-                postRepository.updatePost(post)
+                postRepository.getPostById(post.id)?.let {
+                    postRepository.updatePost(post)
+                } ?: run {
+                    postRepository.setPostLocal(post)
+                }
             }
         }
     }
