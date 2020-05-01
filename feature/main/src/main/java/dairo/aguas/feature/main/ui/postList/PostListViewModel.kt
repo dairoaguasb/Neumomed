@@ -12,6 +12,7 @@ class PostListViewModel(
     private val setPostListLocal: SetPostListLocal,
     private val addPostFavoriteLocal: AddPostFavoriteLocal,
     private val deletePostLocal: DeletePostLocal,
+    private val deleteAllLocal: DeleteAllLocal,
     getPostListLocalFlow: GetPostListLocalFlow
 ) : ViewModel() {
 
@@ -69,6 +70,12 @@ class PostListViewModel(
             viewModelScope.launch(Dispatchers.IO) {
                 deletePostLocal.execute(post.id)
             }
+        }
+    }
+
+    fun deleteAll() {
+        viewModelScope.launch(Dispatchers.IO) {
+            deleteAllLocal.execute()
         }
     }
 

@@ -42,6 +42,10 @@ class PostRepositoryImpl(
         postDao.deletePost(idPost)
     }
 
+    override suspend fun deleteAll() {
+        postDao.deleteAll()
+    }
+
     override suspend fun addPostFavorite(isFavorite: Boolean, idPost: Int) {
         postDao.addPostFavorite(isFavorite, idPost)
     }

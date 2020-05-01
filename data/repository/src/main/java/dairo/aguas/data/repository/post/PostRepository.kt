@@ -25,5 +25,7 @@ interface PostRepository {
 
     suspend fun deletePost(idPost: Int)
 
+    suspend fun deleteAll()
+
     suspend fun addPostFavorite(isFavorite: Boolean, idPost: Int)
 }

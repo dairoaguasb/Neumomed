@@ -16,6 +16,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.github.javiersantos.materialstyleddialogs.MaterialStyledDialog
 import dairo.aguas.data.model.post.Post
 import dairo.aguas.feature.main.R
 import dairo.aguas.feature.main.databinding.PostListFragmentBinding
@@ -32,6 +33,7 @@ class PostListFragment : Fragment(), OnListenerPost {
     private val postListObserver = Observer<List<Post>> { handlePostList(it) }
     private val uiModel = Observer<PostListUiModel> { handleUI(it) }
     private val swipeBackground: ColorDrawable = ColorDrawable(Color.parseColor("#C53C58"))
+    private var isDelete: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,6 +49,7 @@ class PostListFragment : Fragment(), OnListenerPost {
         configureItemTouch()
         configureOnRefresh()
         startObserver()
+        eventViews()
     }
 
     private fun configureDataBinding(inflater: LayoutInflater) {
@@ -134,13 +137,21 @@ class PostListFragment : Fragment(), OnListenerPost {
         viewModel.postList.observe(viewLifecycleOwner, postListObserver)
     }
 
+    private fun eventViews() {
+        binding.fabDelete.setOnClickListener {
+            showDialogDeleteAll()
+        }
+    }
+
     private fun handlePostList(it: List<Post>) {
         postAdapter.submitList(it)
         getPostList(it)
     }
 
     private fun getPostList(postList: List<Post>) {
-        if (postList.isEmpty()) viewModel.getPostListAPI()
+        if (postList.isEmpty() and isDelete.not()) {
+            viewModel.getPostListAPI()
+        }
     }
 
     override fun onClickListener(post: Post) {
@@ -162,5 +173,22 @@ class PostListFragment : Fragment(), OnListenerPost {
             if (showMessageAlert.isNotEmpty())
                 Toast.makeText(context, showMessageAlert, Toast.LENGTH_LONG).show()
         }
+    }
+
+    private fun showDialogDeleteAll() {
+        MaterialStyledDialog.Builder(context)
+            .setIcon(R.drawable.ic_delete)
+            .withIconAnimation(true)
+            .withDialogAnimation(true)
+            .setCancelable(false)
+            .setTitle("Eliminar todo")
+            .setDescription("¿Estas seguro que deseas eliminar todo?")
+            .setPositiveText("SÍ")
+            .setNegativeText("NO")
+            .onPositive { _, _ ->
+                isDelete = true
+                viewModel.deleteAll()
+            }
+            .show()
     }
 }
