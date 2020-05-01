@@ -5,6 +5,8 @@ package dairo.aguas.common.utils
  */
 object Constants {
 
+    const val BASE_URL = "https://jsonplaceholder.typicode.com/"
+
     const val actionSplash = "dairo.aguas.splash.open"
     const val actionMain = "dairo.aguas.main.open"
 }

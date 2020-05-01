@@ -16,9 +16,11 @@ android {
 dependencies {
     implementation project(ModulesDependency.FEATURE_SPLASH)
     implementation project(ModulesDependency.FEATURE_MAIN)
-
     implementation project(ModulesDependency.LIBRARY_ACTIONS)
     implementation project(ModulesDependency.LIBRARY_UICOMPONENTS)
+    implementation project(ModulesDependency.DATA_REMOTE)
+
+    implementation project(ModulesDependency.COMMON)
 
     implementation Libraries.KOIN
     implementation Libraries.KOIN_VIEW_MODEL
