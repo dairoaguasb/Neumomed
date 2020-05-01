@@ -7,11 +7,13 @@ import androidx.lifecycle.viewModelScope
 import dairo.aguas.data.model.post.Post
 import dairo.aguas.data.model.vo.Result
 import dairo.aguas.feature.main.domain.GetPostListAPI
+import dairo.aguas.feature.main.domain.SetPostListLocal
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class PostListViewModel(
-    private val getPostListAPI: GetPostListAPI
+    private val getPostListAPI: GetPostListAPI,
+    private val setPostListLocal: SetPostListLocal
 ) : ViewModel() {
 
     private val _uiModel = MutableLiveData<PostListUiModel>()
@@ -43,7 +45,11 @@ class PostListViewModel(
     }
 
     private fun validatePostListData(postList: List<Post>) {
-        emitUiState(showProgress = false)
+        viewModelScope.launch(Dispatchers.IO) {
+            setPostListLocal.execute(postList).also {
+                emitUiState(showProgress = false)
+            }
+        }
     }
 
 

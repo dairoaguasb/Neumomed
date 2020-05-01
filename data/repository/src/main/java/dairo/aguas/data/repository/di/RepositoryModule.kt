@@ -8,5 +8,5 @@ import org.koin.dsl.module
  * Created by Dairo Aguas B on 30/04/2020.
  */
 val repositoryModule = module {
-    factory { PostRepositoryImpl(get()) as PostRepository }
+    factory { PostRepositoryImpl(get(), get()) as PostRepository }
 }

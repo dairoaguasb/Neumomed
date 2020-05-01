@@ -9,4 +9,6 @@ import dairo.aguas.data.model.vo.Result
 interface PostRepository {
 
     suspend fun getPostList() : Result<List<Post>>
+
+    suspend fun setPostListLocal(postList: List<Post>)
 }
