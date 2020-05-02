@@ -17,6 +17,7 @@ val mainModule = module {
     factory { AddPostFavoriteLocal(get()) }
     factory { DeletePostLocal(get()) }
     factory { DeleteAllLocal(get()) }
+    factory { GetUserByIdAPI(get()) }
     viewModel { PostListViewModel(get(), get(), get(), get(), get(), get(), get()) }
-    viewModel { PostDetailViewModel() }
+    viewModel { PostDetailViewModel(get()) }
 }

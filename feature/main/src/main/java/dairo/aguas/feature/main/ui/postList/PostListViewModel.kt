@@ -21,9 +21,6 @@ class PostListViewModel(
     val uiModel: LiveData<PostListUiModel>
         get() = _uiModel
 
-    //    val postList = getPostListLocalFlow.execute().asLiveData()
-//    val postFavoriteList = getPostFavoriteListLocalFlow.execute().asLiveData()
-
     fun getPostListAPI() {
         emitUiState(showProgress = true)
         viewModelScope.launch(Dispatchers.IO) {
