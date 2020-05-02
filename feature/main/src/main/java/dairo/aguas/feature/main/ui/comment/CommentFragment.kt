@@ -1,33 +1,39 @@
 package dairo.aguas.feature.main.ui.comment
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
-import dairo.aguas.feature.main.R
+import androidx.fragment.app.Fragment
+import dairo.aguas.common.utils.Constants
+import dairo.aguas.feature.main.databinding.CommentFragmentBinding
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class CommentFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = CommentFragment()
-    }
-
-    private lateinit var viewModel: CommentViewModel
+    private val viewModel: CommentViewModel by viewModel()
+    private lateinit var binding: CommentFragmentBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.comment_fragment, container, false)
+        configureDataBinding(inflater)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(CommentViewModel::class.java)
-        // TODO: Use the ViewModel
+        getArgumentsBundle()
+    }
+
+    private fun configureDataBinding(inflater: LayoutInflater) {
+        binding = CommentFragmentBinding.inflate(inflater)
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
+    }
+
+    private fun getArgumentsBundle() {
+        val idPost = arguments!!.getInt(Constants.ID_POST)
     }
 
 }

@@ -1,6 +1,7 @@
 package dairo.aguas.feature.main.di
 
 import dairo.aguas.feature.main.domain.*
+import dairo.aguas.feature.main.ui.comment.CommentViewModel
 import dairo.aguas.feature.main.ui.postDetail.PostDetailViewModel
 import dairo.aguas.feature.main.ui.postList.PostListViewModel
 import dairo.aguas.feature.main.ui.user.UserViewModel
@@ -27,4 +28,5 @@ val mainModule = module {
     viewModel { PostListViewModel(get(), get(), get(), get(), get(), get(), get()) }
     viewModel { PostDetailViewModel(get(), get(), get(), get(), get()) }
     viewModel { UserViewModel(get()) }
+    viewModel { CommentViewModel() }
 }
