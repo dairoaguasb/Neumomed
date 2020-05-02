@@ -11,5 +11,5 @@ data class AddressResponse(
     @Json(name = "suite") val suite: String = "",
     @Json(name = "city") val city: String = "",
     @Json(name = "zipcode") val zipcode: String = "",
-    @Json(name = "geo") val geoResponse: GeoResponse = GeoResponse()
+    @Json(name = "geo") val geo: GeoResponse = GeoResponse()
 )

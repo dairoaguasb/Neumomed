@@ -7,11 +7,13 @@ import androidx.lifecycle.viewModelScope
 import dairo.aguas.data.model.user.UserResponse
 import dairo.aguas.data.model.vo.Result
 import dairo.aguas.feature.main.domain.GetUserByIdAPI
+import dairo.aguas.feature.main.domain.SetUserLocal
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class PostDetailViewModel(
-    private val getUserByIdAPI: GetUserByIdAPI
+    private val getUserByIdAPI: GetUserByIdAPI,
+    private val setUserLocal: SetUserLocal
 ) : ViewModel() {
 
     private val _uiModel = MutableLiveData<PostDetailUiModel>()
@@ -39,7 +41,11 @@ class PostDetailViewModel(
     }
 
     private fun setUserLocal(userResponse: UserResponse) {
-        emitUiState(showProgress = false)
+        viewModelScope.launch(Dispatchers.IO) {
+            setUserLocal.execute(userResponse).also {
+                emitUiState(showProgress = false)
+            }
+        }
     }
 
     private fun emitUiState(showProgress: Boolean = false, showMessageAlert: String = "") {
