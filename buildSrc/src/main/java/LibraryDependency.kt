@@ -24,7 +24,7 @@ object LibraryVersion {
     const val PHOTOVIEW = "2.3.0"
     const val MATERIAL_STYLED_DIALOG = "2.1"
     const val CIRCLE_IMAGE_VIEW = "3.1.0"
-    const val EVENT_BUS = "3.2.0"
+    const val FAB = "1.10.1"
 }
 
 object Libraries {
@@ -75,7 +75,7 @@ object Libraries {
 
     val CIRCLE_IMAGE_VIEW = "de.hdodenhof:circleimageview:${LibraryVersion.CIRCLE_IMAGE_VIEW}"
 
-    val EVENT_BUS = "org.greenrobot:eventbus:${LibraryVersion.EVENT_BUS}"
+    val FAB = "com.getbase:floatingactionbutton:${LibraryVersion.FAB}"
 }
 
 

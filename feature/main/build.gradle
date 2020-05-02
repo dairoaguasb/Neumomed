@@ -22,4 +22,5 @@ dependencies {
 
     implementation AndroidLibraries.LIFECYCLE_LIVEDATA
     implementation Libraries.MATERIAL_STYLED_DIALOG
+    implementation Libraries.FAB
 }

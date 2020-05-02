@@ -139,7 +139,12 @@ class PostListFragment : Fragment(), OnListenerPost {
 
     private fun eventViews() {
         binding.fabDelete.setOnClickListener {
+            binding.floatingActionsMenu.collapse()
             showDialogDeleteAll()
+        }
+        binding.fabFilter.setOnClickListener {
+            binding.floatingActionsMenu.collapse()
+            showDialogFilter()
         }
     }
 
@@ -181,14 +186,28 @@ class PostListFragment : Fragment(), OnListenerPost {
             .withIconAnimation(true)
             .withDialogAnimation(true)
             .setCancelable(false)
-            .setTitle("Eliminar todo")
-            .setDescription("¿Estas seguro que deseas eliminar todo?")
-            .setPositiveText("SÍ")
-            .setNegativeText("NO")
+            .setTitle(R.string.delete_all)
+            .setDescription(getString(R.string.text_delete_all))
+            .setPositiveText(getString(R.string.yes))
+            .setNegativeText(getString(R.string.no))
             .onPositive { _, _ ->
                 isDelete = true
                 viewModel.deleteAll()
             }
+            .show()
+    }
+
+    private fun showDialogFilter() {
+        MaterialStyledDialog.Builder(context)
+            .setIcon(R.drawable.ic_filter_list)
+            .withIconAnimation(true)
+            .withDialogAnimation(true)
+            .setCancelable(false)
+            .setTitle(R.string.filter)
+            .setDescription(getString(R.string.text_filter))
+            .setPositiveText(getString(R.string.all))
+            .setNegativeText(getString(R.string.favorites))
+            .onPositive { _, _ -> }
             .show()
     }
 }

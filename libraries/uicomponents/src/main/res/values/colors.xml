@@ -3,8 +3,12 @@
     <color name="colorPrimary">#85E0FF</color>
     <color name="colorPrimaryDark">#32CCFE</color>
     <color name="colorAccent">#C53C58</color>
+    <color name="colorAccentDark">#9A2D43</color>
 
     <color name="light_gray">#F0F5F5</color>
     <color name="translucent_white">#80FFFFFF</color>
     <color name="dark_gray">#243037</color>
+
+    <color name="black_semi_transparent">#B2000000</color>
+    <color name="secondary_text">#FFFFFF</color>
 </resources>

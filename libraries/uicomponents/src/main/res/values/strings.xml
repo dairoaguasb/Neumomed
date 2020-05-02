@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">Neumomed</string>
     <string name="not_read">No leido</string>
+    <string name="filter">Filtrar</string>
+    <string name="delete_all">Eliminar todo</string>
+    <string name="text_delete_all">¿Estas seguro que deseas eliminar todo?</string>
+    <string name="text_filter">Seleccione como desea filtrar</string>
+    <string name="all">TODOS</string>
+    <string name="favorites">FAVORITOS</string>
+    <string name="yes">SÍ</string>
+    <string name="no">NO</string>
 </resources>
