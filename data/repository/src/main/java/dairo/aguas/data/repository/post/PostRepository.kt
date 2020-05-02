@@ -9,17 +9,19 @@ import kotlinx.coroutines.flow.Flow
  */
 interface PostRepository {
 
-    suspend fun getPostList() : Result<List<Post>>
+    suspend fun getPostList(): Result<List<Post>>
 
-    suspend fun getTotalPosts() : Int
+    suspend fun getTotalPosts(): Int
 
-    suspend fun getPostById(idPost: Int) : Post?
+    suspend fun getPostById(idPost: Int): Post?
 
     suspend fun setPostListLocal(postList: List<Post>)
 
     suspend fun setPostLocal(post: Post)
 
-    fun getPostListLocalFlow() : Flow<List<Post>>
+    fun getPostListLocalFlow(): Flow<List<Post>>
+
+    fun getPostFavoriteListLocalFlow(): Flow<List<Post>>
 
     suspend fun updatePost(post: Post)
 

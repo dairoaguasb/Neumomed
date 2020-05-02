@@ -31,9 +31,11 @@ class PostListFragment : Fragment(), OnListenerPost {
     private lateinit var postAdapter: PostAdapter
     private lateinit var deleteIcon: Drawable
     private val postListObserver = Observer<List<Post>> { handlePostList(it) }
+    private val postFavoriteListObserver = Observer<List<Post>> { handlePostFavoriteList(it) }
     private val uiModel = Observer<PostListUiModel> { handleUI(it) }
     private val swipeBackground: ColorDrawable = ColorDrawable(Color.parseColor("#C53C58"))
     private var isDelete: Boolean = false
+    private var isFavorite: Boolean = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -134,7 +136,16 @@ class PostListFragment : Fragment(), OnListenerPost {
 
     private fun startObserver() {
         viewModel.uiModel.observe(viewLifecycleOwner, uiModel)
-        viewModel.postList.observe(viewLifecycleOwner, postListObserver)
+        getPostList()
+        getPostFavoriteList()
+    }
+
+    private fun getPostList() {
+        viewModel.getPostList().observe(viewLifecycleOwner, postListObserver)
+    }
+
+    private fun getPostFavoriteList() {
+        viewModel.getPostFavoriteList().observe(viewLifecycleOwner, postFavoriteListObserver)
     }
 
     private fun eventViews() {
@@ -149,8 +160,14 @@ class PostListFragment : Fragment(), OnListenerPost {
     }
 
     private fun handlePostList(it: List<Post>) {
-        postAdapter.submitList(it)
-        getPostList(it)
+        if (isFavorite.not()) {
+            postAdapter.submitList(it)
+            getPostList(it)
+        }
+    }
+
+    private fun handlePostFavoriteList(it: List<Post>) {
+        if (isFavorite) postAdapter.submitList(it)
     }
 
     private fun getPostList(postList: List<Post>) {
@@ -207,7 +224,14 @@ class PostListFragment : Fragment(), OnListenerPost {
             .setDescription(getString(R.string.text_filter))
             .setPositiveText(getString(R.string.all))
             .setNegativeText(getString(R.string.favorites))
-            .onPositive { _, _ -> }
+            .onPositive { _, _ ->
+                isFavorite = false
+                getPostList()
+            }
+            .onNegative { _, _ ->
+                isFavorite = true
+                getPostFavoriteList()
+            }
             .show()
     }
 }

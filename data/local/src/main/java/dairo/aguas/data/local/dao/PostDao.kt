@@ -22,6 +22,9 @@ interface PostDao {
     @Query("SELECT * FROM post")
     fun getPostList(): Flow<List<Post>>
 
+    @Query("SELECT * FROM post WHERE isFavorite = 1")
+    fun getPostFavoriteList() : Flow<List<Post>>
+
     @Query("SELECT COUNT(id) FROM post")
     suspend fun getTotalPosts(): Int
 

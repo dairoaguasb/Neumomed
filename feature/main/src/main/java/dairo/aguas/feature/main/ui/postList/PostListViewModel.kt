@@ -13,14 +13,16 @@ class PostListViewModel(
     private val addPostFavoriteLocal: AddPostFavoriteLocal,
     private val deletePostLocal: DeletePostLocal,
     private val deleteAllLocal: DeleteAllLocal,
-    getPostListLocalFlow: GetPostListLocalFlow
+    private val getPostListLocalFlow: GetPostListLocalFlow,
+    private val getPostFavoriteListLocalFlow: GetPostFavoriteListLocalFlow
 ) : ViewModel() {
 
     private val _uiModel = MutableLiveData<PostListUiModel>()
     val uiModel: LiveData<PostListUiModel>
         get() = _uiModel
 
-    val postList: LiveData<List<Post>> = getPostListLocalFlow.execute().asLiveData()
+    //    val postList = getPostListLocalFlow.execute().asLiveData()
+//    val postFavoriteList = getPostFavoriteListLocalFlow.execute().asLiveData()
 
     fun getPostListAPI() {
         emitUiState(showProgress = true)
@@ -30,6 +32,12 @@ class PostListViewModel(
             }
         }
     }
+
+    fun getPostList() =
+        getPostListLocalFlow.execute().asLiveData()
+
+    fun getPostFavoriteList() =
+        getPostFavoriteListLocalFlow.execute().asLiveData()
 
     private fun validatePostListResult(postListResult: Result<List<Post>>) {
         when (postListResult) {
