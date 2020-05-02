@@ -23,7 +23,7 @@ interface PostDao {
     fun getPostList(): Flow<List<Post>>
 
     @Query("SELECT * FROM post WHERE isFavorite = 1")
-    fun getPostFavoriteList() : Flow<List<Post>>
+    fun getPostFavoriteList(): Flow<List<Post>>
 
     @Query("SELECT COUNT(id) FROM post")
     suspend fun getTotalPosts(): Int
@@ -36,6 +36,9 @@ interface PostDao {
 
     @Query("UPDATE POST SET isFavorite = :isFavorite WHERE id = :idPost")
     suspend fun addPostFavorite(isFavorite: Boolean, idPost: Int)
+
+    @Query("UPDATE POST SET isRead = 1 WHERE id = :idPost")
+    suspend fun updatePostRead(idPost: Int)
 
     @Query("DELETE FROM post WHERE id = :idPost")
     suspend fun deletePost(idPost: Int)

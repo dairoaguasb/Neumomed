@@ -30,4 +30,6 @@ interface PostRepository {
     suspend fun deleteAll()
 
     suspend fun addPostFavorite(isFavorite: Boolean, idPost: Int)
+
+    suspend fun updatePostRead(idPost: Int)
 }

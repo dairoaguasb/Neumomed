@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 class PostListViewModel(
     private val getPostListAPI: GetPostListAPI,
     private val setPostListLocal: SetPostListLocal,
-    private val addPostFavoriteLocal: AddPostFavoriteLocal,
+    private val updatePostFavoriteLocal: UpdatePostFavoriteLocal,
     private val deletePostLocal: DeletePostLocal,
     private val deleteAllLocal: DeleteAllLocal,
     private val getPostListLocalFlow: GetPostListLocalFlow,
@@ -66,7 +66,7 @@ class PostListViewModel(
     fun addPostFavorite(post: Post) {
         val isFavorite = post.isFavorite.not()
         viewModelScope.launch(Dispatchers.IO) {
-            addPostFavoriteLocal.execute(isFavorite, post.id)
+            updatePostFavoriteLocal.execute(isFavorite, post.id)
         }
     }
 

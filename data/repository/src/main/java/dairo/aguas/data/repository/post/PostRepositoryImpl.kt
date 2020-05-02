@@ -53,4 +53,8 @@ class PostRepositoryImpl(
         postDao.addPostFavorite(isFavorite, idPost)
     }
 
+    override suspend fun updatePostRead(idPost: Int) {
+        postDao.updatePostRead(idPost)
+    }
+
 }

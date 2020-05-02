@@ -8,12 +8,14 @@ import dairo.aguas.data.model.user.UserResponse
 import dairo.aguas.data.model.vo.Result
 import dairo.aguas.feature.main.domain.GetUserByIdAPI
 import dairo.aguas.feature.main.domain.SetUserLocal
+import dairo.aguas.feature.main.domain.UpdatePostReadLocal
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class PostDetailViewModel(
     private val getUserByIdAPI: GetUserByIdAPI,
-    private val setUserLocal: SetUserLocal
+    private val setUserLocal: SetUserLocal,
+    private val updatePostReadLocal: UpdatePostReadLocal
 ) : ViewModel() {
 
     private val _uiModel = MutableLiveData<PostDetailUiModel>()
@@ -45,6 +47,12 @@ class PostDetailViewModel(
             setUserLocal.execute(userResponse).also {
                 emitUiState(showProgress = false)
             }
+        }
+    }
+
+    fun updatePostRead(idPost: Int) {
+        viewModelScope.launch(Dispatchers.IO) {
+            updatePostReadLocal.execute(idPost)
         }
     }
 

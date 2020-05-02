@@ -10,15 +10,16 @@ import org.koin.dsl.module
  * Created by Dairo Aguas B on 30/04/2020.
  */
 val mainModule = module {
-    factory { GetPostListAPI(get()) }
     factory { SetPostListLocal(get()) }
+    factory { SetUserLocal(get()) }
+    factory { GetUserByIdAPI(get()) }
+    factory { GetPostListAPI(get()) }
     factory { GetPostListLocalFlow(get()) }
     factory { GetPostFavoriteListLocalFlow(get()) }
-    factory { AddPostFavoriteLocal(get()) }
     factory { DeletePostLocal(get()) }
     factory { DeleteAllLocal(get()) }
-    factory { GetUserByIdAPI(get()) }
-    factory { SetUserLocal(get()) }
+    factory { UpdatePostReadLocal(get()) }
+    factory { UpdatePostFavoriteLocal(get()) }
     viewModel { PostListViewModel(get(), get(), get(), get(), get(), get(), get()) }
-    viewModel { PostDetailViewModel(get(), get()) }
+    viewModel { PostDetailViewModel(get(), get(), get()) }
 }

@@ -46,6 +46,7 @@ class PostDetailFragment : Fragment() {
         val arguments = PostDetailFragmentArgs.fromBundle(arguments!!)
         val post = arguments.post
         viewModel.getUserById(post.userId)
+        viewModel.updatePostRead(post.id)
     }
 
     private fun startObserver() {
