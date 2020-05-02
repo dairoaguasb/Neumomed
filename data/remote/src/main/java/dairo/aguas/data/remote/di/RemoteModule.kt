@@ -4,6 +4,7 @@ import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterF
 import com.squareup.moshi.Moshi
 import dairo.aguas.data.remote.ApiServices
 import dairo.aguas.data.remote.post.PostDatasource
+import dairo.aguas.data.remote.user.UserDatasource
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -24,6 +25,7 @@ fun createRemoteModule(baseUrl: String, debugMode: Boolean) = module {
     single { createMoshi() }
 
     factory { PostDatasource(get(), get()) }
+    factory { UserDatasource(get(), get()) }
 }
 
 fun createService(retrofit: Retrofit): ApiServices {
