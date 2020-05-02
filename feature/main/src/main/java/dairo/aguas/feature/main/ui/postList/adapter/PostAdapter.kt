@@ -1,6 +1,5 @@
 package dairo.aguas.feature.main.ui.postList.adapter
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil

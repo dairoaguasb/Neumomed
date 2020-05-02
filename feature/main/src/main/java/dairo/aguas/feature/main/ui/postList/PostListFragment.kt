@@ -66,7 +66,6 @@ class PostListFragment : Fragment(), OnListenerPost {
         postAdapter = PostAdapter(this)
         binding.rvPosts.layoutManager = LinearLayoutManager(context)
         binding.rvPosts.adapter = postAdapter
-
     }
 
     private fun configureItemTouch() {
