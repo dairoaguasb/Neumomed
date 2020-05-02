@@ -19,5 +19,5 @@ interface ApiServices {
     suspend fun getUser(@Path("userId") idUser: Int): Response<UserResponse>
 
     @GET("posts/{idPost}/comments")
-    suspend fun getCommentList(@Path("idPost") idPost: Int) : Response<Comment>
+    suspend fun getCommentList(@Path("idPost") idPost: Int) : Response<List<Comment>>
 }

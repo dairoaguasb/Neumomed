@@ -16,10 +16,11 @@ val mainModule = module {
     factory { GetPostListAPI(get()) }
     factory { GetPostListLocalFlow(get()) }
     factory { GetPostFavoriteListLocalFlow(get()) }
+    factory { GetCommentListAPI(get()) }
     factory { DeletePostLocal(get()) }
     factory { DeleteAllLocal(get()) }
     factory { UpdatePostReadLocal(get()) }
     factory { UpdatePostFavoriteLocal(get()) }
     viewModel { PostListViewModel(get(), get(), get(), get(), get(), get(), get()) }
-    viewModel { PostDetailViewModel(get(), get(), get()) }
+    viewModel { PostDetailViewModel(get(), get(), get(), get()) }
 }

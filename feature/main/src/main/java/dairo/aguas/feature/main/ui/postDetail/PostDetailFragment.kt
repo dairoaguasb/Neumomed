@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import dairo.aguas.data.model.post.Post
 import dairo.aguas.feature.main.R
 import dairo.aguas.feature.main.databinding.PostDetailFragmentBinding
 import dairo.aguas.feature.main.ui.comment.CommentFragment
@@ -45,8 +46,13 @@ class PostDetailFragment : Fragment() {
     private fun getArgsBundle() {
         val arguments = PostDetailFragmentArgs.fromBundle(arguments!!)
         val post = arguments.post
-        viewModel.getUserById(post.userId)
+        getInfoViewModel(post)
+    }
+
+    private fun getInfoViewModel(post: Post) {
         viewModel.updatePostRead(post.id)
+        viewModel.getUserById(post.userId)
+        viewModel.getCommentList(post.id)
     }
 
     private fun startObserver() {
