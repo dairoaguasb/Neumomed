@@ -6,10 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import dairo.aguas.common.utils.Constants
+import dairo.aguas.data.model.user.User
 import dairo.aguas.feature.main.databinding.UserFragmentBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class UserFragment : Fragment() {
+class UserFragment : Fragment(), OnListenerUser {
 
     private val viewModel: UserViewModel by viewModel()
     private lateinit var binding: UserFragmentBinding
@@ -33,7 +34,15 @@ class UserFragment : Fragment() {
     }
 
     private fun getArgumentsBundle() {
-        val idUser = arguments?.getInt(Constants.ID_USER)
+        val idUser = arguments!!.getInt(Constants.ID_USER)
+        viewModel.getUserLocal(idUser)
     }
 
+    override fun onClickOpenWeb(user: User) {
+
+    }
+
+    override fun onClickOpenMap(user: User) {
+
+    }
 }
