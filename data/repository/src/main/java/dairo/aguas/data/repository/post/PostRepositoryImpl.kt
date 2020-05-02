@@ -3,7 +3,6 @@ package dairo.aguas.data.repository.post
 import dairo.aguas.data.local.dao.PostDao
 import dairo.aguas.data.model.post.Post
 import dairo.aguas.data.remote.post.PostDatasource
-import kotlinx.coroutines.flow.Flow
 
 /**
  * Created by Dairo Aguas B on 30/04/2020.
