@@ -16,7 +16,7 @@ import dairo.aguas.data.model.user.User
  */
 @Database(
     entities = [Post::class, User::class, Comment::class],
-    version = 5,
+    version = 6,
     exportSchema = false
 )
 abstract class NeumomedDatabase : RoomDatabase() {

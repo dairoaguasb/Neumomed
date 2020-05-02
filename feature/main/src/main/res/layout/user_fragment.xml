@@ -174,11 +174,42 @@
                 android:layout_height="wrap_content"
                 app:fab_colorNormal="@color/colorAccent"
                 app:fab_colorPressed="@color/colorAccentDark"
-                app:fab_icon="@drawable/ic_my_location"
+                app:fab_icon="@drawable/ic_my_location_white"
                 app:fab_size="mini"
                 app:fab_title="@string/map" />
 
         </com.getbase.floatingactionbutton.FloatingActionsMenu>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4"
+            app:srcCompat="@drawable/ic_my_location" />
+
+        <TextView
+            android:id="@+id/tvLat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@{viewModel.user.lat}"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="@+id/imageView"
+            tools:text="6.55" />
+
+        <TextView
+            android:id="@+id/tvLnt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{viewModel.user.lng}"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/tvLat"
+            app:layout_constraintTop_toTopOf="@+id/imageView"
+            tools:text="-16.55" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

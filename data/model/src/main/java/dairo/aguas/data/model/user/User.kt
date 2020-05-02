@@ -15,6 +15,6 @@ data class User(
     val email: String = "",
     val phone: String = "",
     val website: String = "",
-    val lng: Double = 0.0,
-    val lat: Double = 0.0
+    val lng: String = "",
+    val lat: String = ""
 )

@@ -13,7 +13,7 @@ object ConvertUser {
             email = userResponse.email,
             phone = userResponse.phone,
             website = userResponse.website,
-            lat = userResponse.address.geo.lat.toDouble(),
-            lng = userResponse.address.geo.lng.toDouble()
+            lat = userResponse.address.geo.lat,
+            lng = userResponse.address.geo.lng
         )
 }

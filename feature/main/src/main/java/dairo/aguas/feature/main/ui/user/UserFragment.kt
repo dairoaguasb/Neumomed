@@ -46,5 +46,12 @@ class UserFragment : Fragment() {
             val web = binding.tvWeb.text.toString()
             if (web.isNotEmpty()) Utils.openWebSite(web, context!!)
         }
+
+        binding.fabMap.setOnClickListener {
+            binding.floatingActionsMenu.collapse()
+            val lat = binding.tvLat.text.toString()
+            val lng = binding.tvLnt.text.toString()
+            if (lat.isNotEmpty()) Utils.openMap(lat, lng, context!!)
+        }
     }
 }

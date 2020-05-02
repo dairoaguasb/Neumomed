@@ -16,4 +16,13 @@ object Utils {
         val intent = Intent(Intent.ACTION_VIEW, Uri.parse(urlWeb))
         context.startActivity(intent)
     }
+
+    fun openMap(lat: String, lnt: String, context: Context) {
+        val gmmIntentUri = Uri.parse("geo:$lat,$lnt")
+        val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+        mapIntent.setPackage("com.google.android.apps.maps")
+        if (mapIntent.resolveActivity(context.packageManager) != null) {
+            context.startActivity(mapIntent);
+        }
+    }
 }
