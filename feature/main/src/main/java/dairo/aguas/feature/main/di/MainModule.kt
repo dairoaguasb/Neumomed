@@ -12,6 +12,7 @@ import org.koin.dsl.module
 val mainModule = module {
     factory { SetPostListLocal(get()) }
     factory { SetUserLocal(get()) }
+    factory { SetCommentListLocal(get()) }
     factory { GetUserByIdAPI(get()) }
     factory { GetPostListAPI(get()) }
     factory { GetPostListLocalFlow(get()) }
@@ -22,5 +23,5 @@ val mainModule = module {
     factory { UpdatePostReadLocal(get()) }
     factory { UpdatePostFavoriteLocal(get()) }
     viewModel { PostListViewModel(get(), get(), get(), get(), get(), get(), get()) }
-    viewModel { PostDetailViewModel(get(), get(), get(), get()) }
+    viewModel { PostDetailViewModel(get(), get(), get(), get(), get()) }
 }

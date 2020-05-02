@@ -7,10 +7,7 @@ import androidx.lifecycle.viewModelScope
 import dairo.aguas.data.model.comment.Comment
 import dairo.aguas.data.model.user.UserResponse
 import dairo.aguas.data.model.vo.Result
-import dairo.aguas.feature.main.domain.GetCommentListAPI
-import dairo.aguas.feature.main.domain.GetUserByIdAPI
-import dairo.aguas.feature.main.domain.SetUserLocal
-import dairo.aguas.feature.main.domain.UpdatePostReadLocal
+import dairo.aguas.feature.main.domain.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -18,6 +15,7 @@ class PostDetailViewModel(
     private val getUserByIdAPI: GetUserByIdAPI,
     private val getCommentListAPI: GetCommentListAPI,
     private val setUserLocal: SetUserLocal,
+    private val setCommentListLocal: SetCommentListLocal,
     private val updatePostReadLocal: UpdatePostReadLocal
 ) : ViewModel() {
 
@@ -47,9 +45,7 @@ class PostDetailViewModel(
 
     private fun setUserLocal(userResponse: UserResponse) {
         viewModelScope.launch(Dispatchers.IO) {
-            setUserLocal.execute(userResponse).also {
-                emitUiState(showProgress = false)
-            }
+            setUserLocal.execute(userResponse)
         }
     }
 
@@ -60,7 +56,6 @@ class PostDetailViewModel(
     }
 
     fun getCommentList(idPost: Int) {
-        emitUiState(true)
         viewModelScope.launch(Dispatchers.IO) {
             getCommentListAPI.execute(idPost).also {
                 validateCommentResult(it)
@@ -80,7 +75,11 @@ class PostDetailViewModel(
     }
 
     private fun setCommentListLocal(commentList: List<Comment>) {
-
+        viewModelScope.launch(Dispatchers.IO) {
+            setCommentListLocal.execute(commentList).also {
+                emitUiState(showProgress = false)
+            }
+        }
     }
 
     private fun emitUiState(showProgress: Boolean = false, showMessageAlert: String = "") {
