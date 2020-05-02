@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import dairo.aguas.common.utils.Constants
 import dairo.aguas.data.model.post.Post
 import dairo.aguas.feature.main.R
 import dairo.aguas.feature.main.databinding.PostDetailFragmentBinding
@@ -19,6 +20,7 @@ class PostDetailFragment : Fragment() {
     private val viewModel: PostDetailViewModel by viewModel()
     private lateinit var binding: PostDetailFragmentBinding
     private val uiModel = Observer<PostDetailUiModel> { handleUI(it) }
+    private lateinit var post: Post
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,6 +34,7 @@ class PostDetailFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         activity?.title = getString(R.string.title_post_detail)
         getArgsBundle()
+        getInfoViewModel()
         startObserver()
         configureNavigationItem()
         navigateToUser()
@@ -45,11 +48,10 @@ class PostDetailFragment : Fragment() {
 
     private fun getArgsBundle() {
         val arguments = PostDetailFragmentArgs.fromBundle(arguments!!)
-        val post = arguments.post
-        getInfoViewModel(post)
+        post = arguments.post
     }
 
-    private fun getInfoViewModel(post: Post) {
+    private fun getInfoViewModel() {
         viewModel.updatePostRead(post.id)
         viewModel.getUserById(post.userId)
         viewModel.getCommentList(post.id)
@@ -73,6 +75,9 @@ class PostDetailFragment : Fragment() {
         val fragmentManager = activity!!.supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
         val fragment = UserFragment()
+        val args = Bundle()
+        args.putInt(Constants.ID_USER, post.userId)
+        fragment.arguments = args
         fragmentTransaction.replace(R.id.fragmentContainer, fragment)
         fragmentTransaction.commit()
     }
@@ -81,6 +86,9 @@ class PostDetailFragment : Fragment() {
         val fragmentManager = activity!!.supportFragmentManager
         val fragmentTransaction = fragmentManager.beginTransaction()
         val fragment = CommentFragment()
+        val args = Bundle()
+        args.putInt(Constants.ID_POST, post.id)
+        fragment.arguments = args
         fragmentTransaction.replace(R.id.fragmentContainer, fragment)
         fragmentTransaction.commit()
     }

@@ -9,4 +9,7 @@ object Constants {
 
     const val actionSplash = "dairo.aguas.splash.open"
     const val actionMain = "dairo.aguas.main.open"
+
+    const val ID_USER = "idUser"
+    const val ID_POST = "idPost"
 }

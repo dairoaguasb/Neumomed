@@ -3,6 +3,7 @@ package dairo.aguas.feature.main.di
 import dairo.aguas.feature.main.domain.*
 import dairo.aguas.feature.main.ui.postDetail.PostDetailViewModel
 import dairo.aguas.feature.main.ui.postList.PostListViewModel
+import dairo.aguas.feature.main.ui.user.UserViewModel
 import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -24,4 +25,5 @@ val mainModule = module {
     factory { UpdatePostFavoriteLocal(get()) }
     viewModel { PostListViewModel(get(), get(), get(), get(), get(), get(), get()) }
     viewModel { PostDetailViewModel(get(), get(), get(), get(), get()) }
+    viewModel { UserViewModel() }
 }
