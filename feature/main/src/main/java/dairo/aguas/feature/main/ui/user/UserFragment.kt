@@ -6,11 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import dairo.aguas.common.utils.Constants
+import dairo.aguas.common.utils.Utils
 import dairo.aguas.data.model.user.User
 import dairo.aguas.feature.main.databinding.UserFragmentBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class UserFragment : Fragment(), OnListenerUser {
+class UserFragment : Fragment() {
 
     private val viewModel: UserViewModel by viewModel()
     private lateinit var binding: UserFragmentBinding
@@ -25,6 +26,7 @@ class UserFragment : Fragment(), OnListenerUser {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         getArgumentsBundle()
+        eventViews()
     }
 
     private fun configureDataBinding(inflater: LayoutInflater) {
@@ -38,11 +40,11 @@ class UserFragment : Fragment(), OnListenerUser {
         viewModel.getUserLocal(idUser)
     }
 
-    override fun onClickOpenWeb(user: User) {
-
-    }
-
-    override fun onClickOpenMap(user: User) {
-
+    private fun eventViews() {
+        binding.fabWeb.setOnClickListener {
+            binding.floatingActionsMenu.collapse()
+            val web = binding.tvWeb.text.toString()
+            if (web.isNotEmpty()) Utils.openWebSite(web, context!!)
+        }
     }
 }

@@ -6,10 +6,6 @@
     <data>
 
         <variable
-            name="onClick"
-            type="dairo.aguas.feature.main.ui.user.OnListenerUser" />
-
-        <variable
             name="viewModel"
             type="dairo.aguas.feature.main.ui.user.UserViewModel" />
     </data>
@@ -166,7 +162,6 @@
                 android:id="@+id/fabWeb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="@{() -> onClick.onClickOpenWeb(viewModel.user)}"
                 app:fab_colorNormal="@color/colorAccent"
                 app:fab_colorPressed="@color/colorAccentDark"
                 app:fab_icon="@drawable/ic_web_white"
@@ -177,7 +172,6 @@
                 android:id="@+id/fabMap"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="@{() -> onClick.onClickOpenMap(viewModel.user)}"
                 app:fab_colorNormal="@color/colorAccent"
                 app:fab_colorPressed="@color/colorAccentDark"
                 app:fab_icon="@drawable/ic_my_location"
