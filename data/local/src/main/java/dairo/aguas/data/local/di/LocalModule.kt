@@ -10,4 +10,5 @@ import org.koin.dsl.module
 val localModule = module {
     single { NeumomedDatabase.buildDatabase(androidContext()) }
     factory { (get() as NeumomedDatabase).postDao() }
+    factory { (get() as NeumomedDatabase).userDao() }
 }

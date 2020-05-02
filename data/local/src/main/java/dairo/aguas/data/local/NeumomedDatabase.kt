@@ -5,19 +5,22 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import dairo.aguas.data.local.dao.PostDao
+import dairo.aguas.data.local.dao.UserDao
 import dairo.aguas.data.model.post.Post
+import dairo.aguas.data.model.user.User
 
 /**
  * Created by Dairo Aguas B on 30/04/2020.
  */
 @Database(
-    entities = [Post::class],
-    version = 3,
+    entities = [Post::class, User::class],
+    version = 4,
     exportSchema = false
 )
 abstract class NeumomedDatabase : RoomDatabase() {
 
     abstract fun postDao(): PostDao
+    abstract fun userDao(): UserDao
 
     companion object {
         fun buildDatabase(context: Context) =
