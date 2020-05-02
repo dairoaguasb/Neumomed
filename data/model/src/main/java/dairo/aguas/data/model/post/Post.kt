@@ -2,6 +2,7 @@ package dairo.aguas.data.model.post
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 /**
  * Created by Dairo Aguas B on 30/04/2020.
@@ -15,4 +16,4 @@ data class Post(
     val body: String = "",
     var isRead: Boolean = true,
     var isFavorite: Boolean = false
-)
+) : Serializable

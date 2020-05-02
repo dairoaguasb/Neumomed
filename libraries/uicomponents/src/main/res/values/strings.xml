@@ -9,4 +9,8 @@
     <string name="favorites">FAVORITOS</string>
     <string name="yes">SÍ</string>
     <string name="no">NO</string>
+    <string name="user">Usuario</string>
+    <string name="comments">Comentarios</string>
+    <string name="title_post">Posts</string>
+    <string name="title_post_detail">Detalle del Post</string>
 </resources>

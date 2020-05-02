@@ -1,33 +1,66 @@
 package dairo.aguas.feature.main.ui.postDetail
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import dairo.aguas.feature.main.R
+import dairo.aguas.feature.main.databinding.PostDetailFragmentBinding
+import dairo.aguas.feature.main.ui.comment.CommentFragment
+import dairo.aguas.feature.main.ui.user.UserFragment
 
 class PostDetailFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = PostDetailFragment()
-    }
-
-    private lateinit var viewModel: PostDetailViewModel
+    private val viewModel: PostDetailViewModel by viewModels()
+    private lateinit var binding: PostDetailFragmentBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.post_detail_fragment, container, false)
+        configureDataBinding(inflater)
+        return binding.root
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(PostDetailViewModel::class.java)
-        // TODO: Use the ViewModel
+        activity?.title = getString(R.string.title_post_detail)
+        configureNavigationItem()
+        navigateToUser()
+    }
+
+    private fun configureDataBinding(inflater: LayoutInflater) {
+        binding = PostDetailFragmentBinding.inflate(inflater)
+        binding.lifecycleOwner = this
+        binding.viewModel = viewModel
+    }
+
+    private fun configureNavigationItem() {
+        binding.navViewOrder.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.itUser -> navigateToUser()
+                R.id.itComment -> navigateToComment()
+            }
+            true
+        }
+    }
+
+    private fun navigateToUser() {
+        val fragmentManager = activity!!.supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        val fragment = UserFragment()
+        fragmentTransaction.replace(R.id.fragmentContainer, fragment)
+        fragmentTransaction.commit()
+    }
+
+    private fun navigateToComment() {
+        val fragmentManager = activity!!.supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        val fragment = CommentFragment()
+        fragmentTransaction.replace(R.id.fragmentContainer, fragment)
+        fragmentTransaction.commit()
     }
 
 }

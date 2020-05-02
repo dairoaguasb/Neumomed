@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -47,6 +48,7 @@ class PostListFragment : Fragment(), OnListenerPost {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        activity?.title = getString(R.string.title_post)
         configureAdapter()
         configureItemTouch()
         configureOnRefresh()
@@ -177,7 +179,9 @@ class PostListFragment : Fragment(), OnListenerPost {
     }
 
     override fun onClickListener(post: Post) {
-
+        this.findNavController().navigate(
+            PostListFragmentDirections.actionPostListFragmentToPostDetailFragment(post)
+        )
     }
 
     override fun onClickAddFavorite(post: Post) {
