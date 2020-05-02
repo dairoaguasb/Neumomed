@@ -1,5 +1,7 @@
 package dairo.aguas.data.repository.di
 
+import dairo.aguas.data.repository.comment.CommentRepository
+import dairo.aguas.data.repository.comment.CommentRepositoryImpl
 import dairo.aguas.data.repository.post.PostRepository
 import dairo.aguas.data.repository.post.PostRepositoryImpl
 import dairo.aguas.data.repository.user.UserRepository
@@ -12,4 +14,5 @@ import org.koin.dsl.module
 val repositoryModule = module {
     factory { PostRepositoryImpl(get(), get()) as PostRepository }
     factory { UserRepositoryImpl(get(), get()) as UserRepository }
+    factory { CommentRepositoryImpl(get()) as CommentRepository }
 }
