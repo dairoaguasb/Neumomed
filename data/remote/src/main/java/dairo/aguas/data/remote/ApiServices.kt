@@ -1,5 +1,6 @@
 package dairo.aguas.data.remote
 
+import dairo.aguas.data.model.comment.Comment
 import dairo.aguas.data.model.post.Post
 import dairo.aguas.data.model.user.UserResponse
 import retrofit2.Response
@@ -16,4 +17,7 @@ interface ApiServices {
 
     @GET("users/{userId}")
     suspend fun getUser(@Path("userId") idUser: Int): Response<UserResponse>
+
+    @GET("posts/{idPost}/comments")
+    suspend fun getCommentList(@Path("idPost") idPost: Int) : Response<Comment>
 }

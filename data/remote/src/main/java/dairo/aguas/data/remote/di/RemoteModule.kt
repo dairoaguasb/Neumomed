@@ -3,6 +3,7 @@ package dairo.aguas.data.remote.di
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import dairo.aguas.data.remote.ApiServices
+import dairo.aguas.data.remote.comment.CommentDatasource
 import dairo.aguas.data.remote.post.PostDatasource
 import dairo.aguas.data.remote.user.UserDatasource
 import okhttp3.OkHttpClient
@@ -26,6 +27,7 @@ fun createRemoteModule(baseUrl: String, debugMode: Boolean) = module {
 
     factory { PostDatasource(get(), get()) }
     factory { UserDatasource(get(), get()) }
+    factory { CommentDatasource(get(), get()) }
 }
 
 fun createService(retrofit: Retrofit): ApiServices {
