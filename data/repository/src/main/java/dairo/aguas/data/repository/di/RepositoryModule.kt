@@ -14,5 +14,5 @@ import org.koin.dsl.module
 val repositoryModule = module {
     factory { PostRepositoryImpl(get(), get()) as PostRepository }
     factory { UserRepositoryImpl(get(), get()) as UserRepository }
-    factory { CommentRepositoryImpl(get()) as CommentRepository }
+    factory { CommentRepositoryImpl(get(), get()) as CommentRepository }
 }

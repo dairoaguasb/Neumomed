@@ -9,4 +9,6 @@ import dairo.aguas.data.model.vo.Result
 interface CommentRepository {
 
     suspend fun getCommentList(idPost: Int): Result<List<Comment>>
+
+    suspend fun setCommentListLocal(commentList: List<Comment>)
 }
