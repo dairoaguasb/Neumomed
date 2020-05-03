@@ -2,6 +2,8 @@
 
 _Proyecto personal para Neumomed_
 
+* [APK](https://subastaya.com/images/Neumomed.apk)
+
 # Herramientas utilizadas
 * Kotlin + Coroutines
 * Retrofit
