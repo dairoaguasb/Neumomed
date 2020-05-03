@@ -27,8 +27,8 @@ _Proyecto personal para Neumomed_
 * Gradle
   * BuildSrc
   
-# Arquitectura
+# Architecture
 ![MVVM + Clean Arquitecture](https://subastaya.com/images/Arquitectura.png)
 
-# Modularización
+# Modularization
 ![Modularización](https://subastaya.com/images/Modularcion.png)
