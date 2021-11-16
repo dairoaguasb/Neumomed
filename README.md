@@ -1,7 +1,5 @@
 # Neumomed
 
-_Proyecto personal para Neumomed_
-
 # Herramientas utilizadas
 * Kotlin + Coroutines
 * Retrofit
